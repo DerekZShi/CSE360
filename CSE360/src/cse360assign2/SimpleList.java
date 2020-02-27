@@ -74,6 +74,29 @@ public class SimpleList {
 		//increments count if the array is not full
 	}
 	
+	public void append(int toBeAppended)
+	{
+		if (count == list.length)
+		{
+			temp = new int[list.length];
+			
+			for (int i = 0; i < list.length; i++)
+			{
+				temp[i] = list [i];
+			}
+			
+			list = new int[(int) (list.length * 1.5)];
+			
+			for (int i = 0; i < list.length * 2/3; i++)
+			{
+				list[i] = temp[i];
+			}
+		}
+		list[count] = toBeAppended;
+		
+		count++;
+	}
+	
 	/** This method removes the first integer found with the same value 
 	 * as the input. Then it slides all of the other array values one 
 	 *  to the left.
@@ -133,7 +156,7 @@ public class SimpleList {
 	
 	/** This method returns the count
 	 */
-	public int sizeOfArray()
+	public int size()
 	{
 		return list.length;
 	}
@@ -181,6 +204,30 @@ public class SimpleList {
 			}
 		}
 		return index;
+	}
+	
+	public int first()
+	{
+		int firstElement = -1;
+		
+		if (count > 0)
+		{
+			firstElement = list[0];
+		}
+		
+		return firstElement;
+	}
+	
+	public int last()
+	{
+		int lastElement = -1;
+		
+		if (count > 0)
+		{
+			lastElement = list[count-1];
+		}
+		
+		return lastElement;
 	}
 
 }

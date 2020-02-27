@@ -67,10 +67,44 @@ class SimpleListTest {
 		test.remove(2);
 		test.remove(1);
 		test.remove(0);
-		System.out.println(test.count());
-		System.out.println(test.sizeOfArray());
-		System.out.println(test.toString());
+		//System.out.println(test.count());
+		//System.out.println(test.sizeOfArray());
+		//System.out.println(test.toString());
 	}
+	
+	@Test
+	void testAppend()
+	{
+		SimpleList test = new SimpleList();
+		test.append(0);
+		test.append(1);
+		test.append(2);
+		test.append(3);
+		test.append(4);
+		test.append(5);
+		test.append(6);
+		test.append(7);
+		test.append(8);
+		test.append(9);
+		test.append(10);
+		//System.out.println(test.count());
+		//System.out.println(test.size());
+		//System.out.println(test.toString());
+		
+		//System.out.println(test.first());
+		//System.out.println(test.last());
+	}
+	
+	@Test
+	void testFirstLast()
+	{
+		SimpleList test = new SimpleList();
+
+		System.out.println(test.first());
+		System.out.println(test.last());
+	}
+	
+	
 	
 
 	
