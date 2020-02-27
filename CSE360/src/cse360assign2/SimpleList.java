@@ -4,7 +4,7 @@ package cse360assign2;
 *346
 *Assignment 1
 *This is a file that creates an array and performs a few operations
-*on said array
+*on	 said array
 */
 
 /**This class represents a simple list with a variety of functions.
@@ -15,6 +15,15 @@ public class SimpleList {
 	 * This is the array.
 	 */
 	private int[] list;
+	
+	/**
+	 * This is the temporary array which holds the values of the elements
+	 * in the array while the array is increasing or decreasing in size
+	 */
+	
+	private int[] temp;
+	
+	
 	/**
 	 * This integer keeps track of the number of elements in the array.
 	 */
@@ -34,7 +43,24 @@ public class SimpleList {
 	 */
 	public void add(int toBeAdded)
 	{
-		for (int i = 9; i > 0 ; i-- )
+		if (count == list.length)
+		{
+			temp = new int[list.length];
+			
+			for (int i = 0; i < list.length; i++)
+			{
+				temp[i] = list [i];
+			}
+			
+			list = new int[(int) (list.length * 1.5)];
+			
+			for (int i = 0; i < list.length * 2/3; i++)
+			{
+				list[i] = temp[i];
+			}
+			
+		}
+		for (int i = list.length-1; i > 0 ; i-- )
 		{
 			list[i] = list[i-1];
 		}
@@ -42,10 +68,9 @@ public class SimpleList {
 		
 		list[0] = toBeAdded;
 		//sets element 0 to the toBeAdded integer.
-		if(count < 10)
-		{
-			count++;
-		}
+		
+		count++;
+		
 		//increments count if the array is not full
 	}
 	
@@ -61,7 +86,7 @@ public class SimpleList {
 		{
 			if(list[i] == ToBeRemoved && foundTarget == false)
 			{
-				for (int j = i; j < 9; j++)
+				for (int j = i; j < list.length-1; j++)
 				{
 					list[j] = list[j+1];
 				}
@@ -75,6 +100,27 @@ public class SimpleList {
 				//decrements count if array is 0;
 				foundTarget = true;
 			}
+			
+			
+			if (count < list.length * 3/4 && list.length > 1)
+			{
+				temp = new int[list.length];
+				
+				for (int k = 0; k < count; k++)
+				{
+					temp[k] = list[k];
+				}
+				
+				
+				list = new int[(int) (list.length * 3/4)];
+				
+				
+				for (int k = 0; k < count; k++)
+				{
+					list[k] = temp[k];
+				}
+				
+			}
 		}
 	}
 	
@@ -83,6 +129,13 @@ public class SimpleList {
 	public int count()
 	{
 		return count;
+	}
+	
+	/** This method returns the count
+	 */
+	public int sizeOfArray()
+	{
+		return list.length;
 	}
 	
 	/**This method outputs the array in the form of an appended
