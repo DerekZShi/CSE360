@@ -1,7 +1,5 @@
 package cse360assign2;
 
-//testing
-
 /**Derek Shi
 *346
 *Assignment 1
